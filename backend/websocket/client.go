@@ -22,7 +22,7 @@ func (c *Client) Read() {
 	defer func() {
 		c.Pool.Unregister <- c
 		c.Pool.Close()
-	}{}
+	}()
 
 	for {
 		msgType, msg, err := c.Conn.ReadMessage();
