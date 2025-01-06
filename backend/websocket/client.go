@@ -1,10 +1,10 @@
 package Customwebsocket
 
 import (
+	"fmt"
 	"sync"
 
 	"github.com/gorilla/websocket"
-	"golang.org/x/tools/go/analysis/passes/defers"
 )
 
 type Client struct {
@@ -21,16 +21,22 @@ type Message struct {
 func (c *Client) Read() {
 	defer func() {
 		c.Pool.Unregister <- c
-		c.Pool.Close()
+		if c.Pool != nil {
+			c.Pool.Close()
+		}
 	}()
 
 	for {
-		msgType, msg, err := c.Conn.ReadMessage();
+		msgType, msg, err := c.Conn.ReadMessage()
 		if err != nil {
 			fmt.Println(err)
-			return 
+			return
 		}
-		m := Message(Type: msgType, Body: string(msg))
+
+		m := Message{
+			Type: msgType,
+			Body: string(msg),
+		}
 
 		c.Pool.Broadcast <- m
 

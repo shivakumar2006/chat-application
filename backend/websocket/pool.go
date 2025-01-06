@@ -18,6 +18,18 @@ func NewPool() *Pool {
 	}
 }
 
+func (pool *Pool) Close() {
+	// Close the channels to ensure no further communication is possible
+	close(pool.Register)
+	close(pool.Unregister)
+	close(pool.Broadcast)
+
+	// Optionally clear the Clients map
+	pool.Clients = nil
+
+	fmt.Println("Pool closed successfully")
+}
+
 func (pool *Pool) Start() {
 	for {
 		select {
