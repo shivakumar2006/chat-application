@@ -1,4 +1,4 @@
-module chatApplication
+module chatApplication/backend
 
 go 1.23.4
 
