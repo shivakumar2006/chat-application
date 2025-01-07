@@ -1,16 +1,21 @@
 .ChatInput {
-    width: 90%;
-    display: block;
-    margin: auto;
+    position: fixed; /* Fix to the viewport */
+    bottom: 10px; /* Slightly above the bottom */
+    width: 90%; /* Adjust the width to fit better */
+    left: 50%; /* Center the box horizontally */
+    transform: translateX(-50%); /* Align the box to the center */
+    background-color: #f9f9f9; /* Optional: Background color */
+    padding: 10px; /* Add padding for a cleaner look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for style */
 
     input {
         padding: 10px;
         margin: 0;
         background-color: white;
         font-size: 15px;
-        border: none;
-        border-radius: 5px;
         border: 1px solid black;
-        width: 98%;
+        border-radius: 5px;
+        width: 100%; /* Full width within the container */
+        box-sizing: border-box; /* Ensure padding doesn't affect width */
     }
 }
