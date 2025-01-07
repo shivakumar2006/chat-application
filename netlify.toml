@@ -1,6 +1,2 @@
-[build]
-command = "npm run build"
-publish = "build"
-
 [build.environment]
-NODE_VERSION = "20"
+  NODE_VERSION = "22"  # Choose the version of Node you want to use
