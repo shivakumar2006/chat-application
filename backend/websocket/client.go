@@ -21,15 +21,12 @@ type Message struct {
 func (c *Client) Read() {
 	defer func() {
 		c.Pool.Unregister <- c
-		if c.Pool != nil {
-			c.Pool.Close()
-		}
 	}()
 
 	for {
 		msgType, msg, err := c.Conn.ReadMessage()
 		if err != nil {
-			fmt.Println(err)
+			fmt.Println("Error reading message:", err)
 			return
 		}
 
@@ -39,7 +36,5 @@ func (c *Client) Read() {
 		}
 
 		c.Pool.Broadcast <- m
-
-		fmt.Println("msg received===>>>\n", m)
 	}
 }
