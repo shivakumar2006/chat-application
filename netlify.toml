@@ -1,3 +1,4 @@
 [build]
-publish = "frontend/chat-app/build"
-command = "npm run build"
+  base = "frontend/chat-app"      # Specify the directory where your app resides
+  command = "npm run build"       # Build command to create the production build
+  publish = "frontend/chat-app/build"  # Directory to publish the build
