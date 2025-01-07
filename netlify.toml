@@ -1,2 +1,4 @@
-[build.environment]
-  NODE_VERSION = "22"  # Choose the version of Node you want to use
+[build]
+  base = "chat-app"
+  publish = "chat-app/build"
+  command = "npm install && npm run build"
