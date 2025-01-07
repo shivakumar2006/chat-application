@@ -1,4 +1,3 @@
 [build]
-  base = "chat-app"
-  publish = "chat-app/build"
-  command = "npm install && npm run build"
+command = "npm run build"
+publish = "frontend/chat-app/build"
