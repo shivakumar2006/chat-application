@@ -1,4 +1,5 @@
-const socket = new WebSocket('wss://8d75-2402-8100-27f1-d7ed-8d44-2eb1-c6d-5d28.ngrok-free.app/ws');
+const socket = new WebSocket('wss://chat-application-2-20ig.onrender.com/ws');
+
 
 
 let connect = (cb) => {
