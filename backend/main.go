@@ -4,6 +4,7 @@ import (
 	Customwebsocket "chatApplication/backend/websocket"
 	"log"
 	"net/http"
+	"os"
 )
 
 func serverWs(pool *Customwebsocket.Pool, w http.ResponseWriter, r *http.Request) {
@@ -22,8 +23,16 @@ func serverWs(pool *Customwebsocket.Pool, w http.ResponseWriter, r *http.Request
 }
 
 func main() {
+	// Get the port from the environment variable (Heroku) or fallback to 9000 for local
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "9000" // Default port for local development
+	}
+
 	setupRoutes()
-	http.ListenAndServe(":9000", nil)
+	// Start the server on the dynamically assigned port
+	log.Printf("Server starting on port %s...\n", port)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
 func setupRoutes() {
